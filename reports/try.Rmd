@@ -1,0 +1,69 @@
+---
+title: 'UN Report: GDP & Life Expectancy'
+author: 'Irene Morse'
+date: '20 October'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+library('tidyverse')
+```
+This report was prepared for the UN blah blah.
+
+```{r}
+setwd('C:/Users/irene/Desktop/un-report')
+gapminder_1997 <- read_csv('data/gapminder_1997.csv')
+summary(gapminder_1997)
+```
+
+
+
+```{r plot, echo=FALSE}
+ggplot(data=gapminder_1997) +
+  aes(x=gdpPercap, y=lifeExp, color=continent, size=pop/1000000)+
+  geom_point() +
+  labs(x="GDP Per Capita", y="Life Expectancy",
+       title = "Do people in wealthy countries live longer?",
+       size = "Population (in millions")
+```
+
+```{r stats, include=FALSE}
+n <- nrow(gapminder_1997)
+GDP_min <- min(gapminder_1997$gdpPercap)
+GDP_max <- max(gapminder_1997$gdpPercap)
+```
+
+This report uses a dataset of `r n` countries.
+
+|Summary of Data|
+|-----|-----|
+| number countries | `r n` |
+| minimum GDP/cap | `r GDP_min` |
+| maximum GDP/cap | `r GDP_max` |
+
+
+$$ y = mx+b $$
+
+```{r}
+knitr::kable(gapminder_1997[which(gapminder_1997$continent=="Oceania"),])
+```
+# Heading
+
+## Subheading
+
+* item
+  + sub item
+  + another
+  
+* **Python**
+* *kable*
+* ***memory management***
+
+1. **Python**
+2. *kable*
+3. ***memory management***
+
